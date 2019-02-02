@@ -1,0 +1,31 @@
+{
+	"name":"Search by email",
+	"description": "Find image by selecting email",
+	"version": "1.0",
+	"icons": {
+      "16": "images/search16.png",
+      "32": "images/search32.png",
+      "48": "images/search48.png",
+      "128": "images/search128.png"
+    },
+	"permissions": ["storage","declarativeContent"],
+	"content_scripts": [
+	{
+     "matches": ["http://*/*","https://*/*"],
+	 "js": ["content.js"]
+	}],
+	"page_action": {
+		"default_popup": "popup.html",
+		"default_icon": {
+        "16": "images/search16.png",
+        "32": "images/search32.png",
+        "48": "images/search48.png",
+        "128": "images/search128.png"
+      }
+	},
+	"background": {
+	  "scripts": ["background.js"],
+      "persistent": false
+	},
+    "manifest_version": 2
+}

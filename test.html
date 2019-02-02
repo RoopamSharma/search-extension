@@ -1,0 +1,31 @@
+<html>
+<body>
+<button id="search">Find</button>
+<div id="result"></div>
+</body>
+<script language="JavaScript" type="text/javascript" src="jquery-3.3.1.js"></script>
+<script>
+var search = document.getElementById("search");
+
+search.onclick = function(element){
+	var	email = "roopamsharma49@gmail.com";
+	$.ajax({
+    url: "https://api.fullcontact.com/v3/person.enrich",
+    beforeSend: function(xhr) { 
+      xhr.setRequestHeader("Authorization","Bearer Uu9f514lLOSkxycB7SB4U3hJVHMkCWw4"); 
+    },
+    type: 'POST',
+    dataType: 'json',
+    contentType: 'application/json',
+    processData: false,
+    data: '{"email":"'+email+'"}',
+    success: function (data) {
+      document.getElementById("result").innerHTML = JSON.stringify(data);
+    },
+    error: function(){
+      document.getElementById("result").innerHTML = "Cannot get data";
+    }
+	});
+}
+</script>
+</html>
