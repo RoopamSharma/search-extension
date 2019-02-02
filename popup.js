@@ -8,7 +8,7 @@ search.onclick = function(element){
 	$.ajax({
     url: "https://api.fullcontact.com/v3/person.enrich",
     beforeSend: function(xhr) { 
-      xhr.setRequestHeader("Authorization","Bearer Uu9f514lLOSkxycB7SB4U3hJVHMkCWw4"); 
+      xhr.setRequestHeader("Authorization","Bearer {your-key}"); 
     },
     type: 'POST',
     dataType: 'json',
