@@ -8,7 +8,7 @@ search.onclick = function(element){
 	$.ajax({
     url: "https://api.fullcontact.com/v3/person.enrich",
     beforeSend: function(xhr) { 
-      xhr.setRequestHeader("Authorization","Bearer {your-key}"); 
+      xhr.setRequestHeader("Authorization","Bearer your-key"); 
     },
     type: 'POST',
     dataType: 'json',
@@ -16,10 +16,22 @@ search.onclick = function(element){
     processData: false,
     data: '{"email":"'+email+'"}',
     success: function (data) {
-      document.getElementById("result").innerHTML = JSON.stringify(data);
+	  var fullName = '-';
+	  var location = '-';
+	  var linkedin = '';
+	  if(data.fullName!=undefined){
+		fullName = data.fullName
+	  }
+	  if(data.location!=undefined){
+		location = data.location
+	  }
+	  if(data.linkedin!=undefined){
+		linkedin = data.linkedin
+	  }
+      document.getElementById("result").innerHTML = "<label>Full Name: "+fullName+"</label><br> <a href="+linkedin+" target='_blank'>Linkedin: "+linkedin+"</a><br><label>Phone: "+location+"</label>";
     },
     error: function(){
-      document.getElementById("result").innerHTML = "Cannot get data";
+      document.getElementById("result").innerHTML = "No data found";
     }
 	});
  });
